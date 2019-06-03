@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form class="form-section" padding [formGroup]="addAddressForm">
+    <ion-list>
+        <ion-list-header>Add a new Address</ion-list-header>
+        <ion-item>
+          <ion-label>Country</ion-label>
+          <ion-select formControlName="country" value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="india">India</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+        <ion-card>
+        <ion-item>
+          <ion-input required type="text" formControlName="fullName" placeholder="Full Name"></ion-input>
+          <div class="icons">
+            <ion-icon name="alert"></ion-icon>
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-input required type="text" formControlName="phoneNumber" placeholder="10 digit mobile number without prefixes"></ion-input>
+          <div class="icons">
+            <ion-icon name="alert"></ion-icon>
+          </div>
+          <div *ngIf="addAddressForm.get('phoneNumber').touched">
+            <div class="error-msg" *ngIf="addAddressForm.get('phoneNumber').errors?.required">{{ 'Please Tell Us your Phone Number' }}</div>
+            <div class="error-msg" *ngIf="addAddressForm.get('phoneNumber').errors?.minlength">{{ 'Phone Number minimum length is 10 characters' }}</div>
+            <div class="error-msg" *ngIf="addAddressForm.get('phoneNumber').errors?.maxlength">{{ 'Phone Number maximum length is 10 characters' }}</div>
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-input required type="text" formControlName="pincode" placeholder="6 digits 0-9 Pincode"></ion-input>
+          <div class="icons">
+            <ion-icon name="alert"></ion-icon>
+          </div>
+          <div *ngIf="addAddressForm.get('pincode').touched">
+            <div class="error-msg" *ngIf="addAddressForm.get('pincode').errors?.required">{{ 'Please Tell Us your pincode' }}</div>
+            <div class="error-msg" *ngIf="addAddressForm.get('pincode').errors?.minlength">{{ 'pincode minimum length is 6 characters' }}</div>
+            <div class="error-msg" *ngIf="addAddressForm.get('pincode').errors?.maxlength">{{ 'pincode maximum length is 6 characters' }}</div>
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-input required type="text" formControlName="addressLine1" placeholder="Flat/ House No/ Floor/ Building"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input required type="text" formControlName="addressLine2" placeholder="Colony/ Street/ Locality"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" formControlName="landmark" placeholder="Landmark"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input required formControlName="city" type="text" placeholder="City"></ion-input>
+        </ion-item>
+        </ion-card>
+      
+        <ion-item>
+          <ion-label>State</ion-label>
+          <ion-select formControlName="state" value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option  value="andhrapradesh">Andhra Pradesh</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+      </ion-list>
+      
+      <ion-list>
+        <ion-list-header>Additional Address Details</ion-list-header>
+      
+        <ion-item>
+          <ion-label>Address type</ion-label>
+          <ion-select formControlName="addressType" value="brown" okText="Okay" cancelText="Dismiss">
+            <ion-select-option  value="Home">Home</ion-select-option>
+            <ion-select-option  value="Office">Office</ion-select-option>
+          </ion-select>
+        </ion-item>
+          <ion-button *ngIf="!addressData" (click)="addAddress()" expand="block">Add Address</ion-button>
+          <ion-button *ngIf="addressData" (click)="updateAddress()" expand="block">Update Address</ion-button>
+      </ion-list>
+    </form>
+</ion-content>

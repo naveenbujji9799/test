@@ -1,0 +1,14 @@
+.signup-page {
+  .btn-success {
+    margin-top: 25px;
+    cursor: pointer;
+  }
+  .form-group {
+    ion-label {
+      sup {
+        font-size: 17px;
+        top: -0.1em;
+      }
+    }
+  }
+}

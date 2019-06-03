@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<app-address-component (addressId)="onDeleteAddress($event)" (editAddressIndex)="onEditAddressEmit($event)" (addressIndex)="onAddressEmit($event)"[Addresses]="Addresses | async"></app-address-component>
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="20%" *ngIf="!isLoading && !noData">
+    <ion-infinite-scroll-content loadingSpinner="bubbles"
+    loadingText="Loading more addresses..."></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

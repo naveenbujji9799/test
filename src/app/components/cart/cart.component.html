@@ -1,0 +1,53 @@
+<ion-list no-margin>
+            <!-- <div *ngFor="let prod of cartArray.cartItems"> -->
+      <ion-card *ngFor="let cartObject of cartArray; let i= index">
+            <!-- <ion-card-header>
+            </ion-card-header> -->
+            <ion-card-content>
+            <div class="flexcontainer">
+                  <div class="flexbox flex25">
+                  <img src="{{cartObject?.image_url}}" width="100" height="100"/>
+                  </div>
+                  <div class="flexbox flex75">
+                  <div class="cart-body">
+                        <div class="upper-cart">
+                        <div class="product-card-title">
+                              {{cartObject?.title}}
+                        </div>
+                        <div (click)="emitIndex(i);onDeleteCart(cartObject)">
+                              <i class="material-icons">delete</i>
+                        </div>
+                        </div>
+                        <div class="lower-cart">
+                        <div class="dropdown">
+                              <ion-item>
+                              <ion-label>quantity</ion-label>
+                              <ion-select [(ngModel)]="quantity">
+                              <ion-select-option selected="true" value="1">1</ion-select-option>
+                              <ion-select-option value="2">2</ion-select-option>
+                              </ion-select>
+                              </ion-item>
+                        </div>
+                        <div class="price">
+                              {{cartObject?.price}}
+                        </div>
+                        </div>
+                  </div>
+                  </div>
+            </div>
+            <!-- Add card content here! -->
+            </ion-card-content>
+      </ion-card>
+<div class="subscription-checkbox">
+      <div>
+      <ion-checkbox color="primary"></ion-checkbox>
+      </div>
+      <div class="subscription-label">
+      <ion-label>This order is for subscription</ion-label>
+      </div>
+</div>
+<div>
+      <ion-button>Proceed to Checkout</ion-button>
+</div>
+            <!-- </div> -->
+</ion-list>

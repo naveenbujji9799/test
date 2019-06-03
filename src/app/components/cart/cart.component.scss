@@ -1,0 +1,54 @@
+.flex25 {
+    -webkit-flex: 1 0 0;
+    flex: 1 0 0;
+}
+
+.flex75 {
+    -webkit-flex: 4 0 0;
+    flex: 4 0 0;
+}
+
+.cart-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.upper-cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.lower-cart {
+    display: flex;
+    flex-direction: row;
+}
+
+.flexcontainer {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    width:100%;
+    min-height:100px;
+    }
+.flexbox {
+    margin:5px;
+    // border:1px solid #F2F2F2;
+    // background-color:#E3E3E3;
+    padding:5px;
+}
+
+.subscription-checkbox {
+    display:flex;
+    flex-direction: row;
+}
+
+.subscription-label {
+    margin-top: -11px;
+    margin-left: 10px;
+}
+
+.material-icons {
+    color: var(--ion-color-primary, #e0360b)
+}

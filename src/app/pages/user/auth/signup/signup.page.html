@@ -1,0 +1,94 @@
+<app-header title="Signup" showBackButton="true"></app-header>
+
+<ion-content>
+  <div class="main-content signup-page w-700">
+    <form class="form-section" padding [formGroup]="signUpForm">
+      <div class="form-group" [class.error]="signUpForm.get('fname').touched && !signUpForm.get('fname').valid">
+        <ion-label for="fname" text-capitalize>{{'First Name'}}
+          <sup>*</sup>
+        </ion-label>
+        <div class="form-input">
+          <ion-input id="fname" placeholder="{{'So we know what to call you'}}" inputmode="text" formControlName="fname"></ion-input>
+          <div class="icons">
+            <ion-icon name="alert"></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="signUpForm.get('fname').touched && !signUpForm.get('fname').valid" class="error-msg">{{'First Name is required'}}</div>
+      </div>
+      <div class="form-group">
+        <ion-label for="lname" text-capitalize>{{'Last Name'}}</ion-label>
+        <div class="form-input">
+          <ion-input id="lname" placeholder="{{'Please enter your last name'}}" inputmode="text" formControlName="lname"></ion-input>
+        </div>
+      </div>
+      <div class="form-group" [class.error]="signUpForm.get('mobile').touched && !signUpForm.get('mobile').valid">
+        <ion-label for="mobile" text-capitalize>{{'Mobile'}}
+          <sup>*</sup>
+        </ion-label>
+        <div class="form-input mobile-input">
+          <span>+91</span>
+          <ion-input id="mobile" placeholder="{{'Please enter your mobile number'}}" inputmode="text" formControlName="mobile"></ion-input>
+          <div class="icons">
+            <ion-icon name="alert"></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="signUpForm.get('mobile')?.touched">
+          <div class="error-msg" *ngIf="signUpForm.get('mobile').errors?.required">{{ 'Mobile number is required' }}
+          </div>
+          <div class="error-msg" *ngIf="signUpForm.get('mobile').errors?.pattern">{{ 'Mobile should start with digits 9,8,7,6' }}
+          </div>
+          <div class="error-msg" *ngIf="!signUpForm.get('mobile').errors?.pattern && (signUpForm.get('mobile').errors?.minlength ||  signUpForm.get('mobile').errors?.maxlength)">{{ 'Mobile should consist of 10 digits' }}
+          </div>
+        </div>
+      </div>
+      <div class="form-group" [class.error]="signUpForm.get('email').touched && !signUpForm.get('email').valid">
+        <ion-label for="email" text-capitalize>{{'Email'}}
+          <sup>*</sup>
+        </ion-label>
+        <div class="form-input">
+          <ion-input id="email" placeholder="{{'Please enter your email id'}}" inputmode="email" formControlName="email"></ion-input>
+          <div class="icons">
+            <ion-icon name="alert"></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="signUpForm.get('email').touched">
+          <div class="error-msg" *ngIf="signUpForm.get('email').errors?.required">{{ 'Please provide your email' }}
+          </div>
+          <div class="error-msg" *ngIf="signUpForm.get('email').errors?.email">{{ 'Please provide the correct email address'}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group" [class.error]="signUpForm.get('password').touched && !signUpForm.get('password').valid">
+        <ion-label for="password" text-capitalize>{{'Password'}}
+          <sup>*</sup>
+        </ion-label>
+        <div class="form-input">
+          <ion-input [type]="'password'" [inputmode]="'password'" no-border placeholder="{{ 'Enter your password' }}"
+            formControlName="password" id="password"></ion-input>
+          <div class="icons">
+            <ion-icon name="alert"></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="signUpForm.get('password').touched">
+          <div class="error-msg" *ngIf="signUpForm.get('password').errors?.required">{{ 'It will be our little secret' }}</div>
+          <div class="error-msg" *ngIf="signUpForm.get('password').errors?.minlength">{{ 'Password minimum length is 6 characters' }}</div>
+        </div>
+      </div>
+      <div class="form-group" [class.error]="signUpForm.get('confirmPassword').touched && !signUpForm.get('confirmPassword').valid">
+        <ion-label for="confirmPassword" text-capitalize>{{'Confirm Password'}}
+          <sup>*</sup>
+        </ion-label>
+        <div class="form-input">
+          <ion-input id="confirmPassword" placeholder="{{'Please confirm your password'}}" inputmode="password" type="password"
+            formControlName="confirmPassword"></ion-input>
+          <div class="icons">
+            <ion-icon name="alert"></ion-icon>
+          </div>
+        </div>
+        <div *ngIf="signUpForm.get('confirmPassword').touched && !signUpForm.get('confirmPassword').valid" class="error-msg">{{'Password do not match'}}</div>
+      </div>
+      <ion-button color="success" class="btn-success" text-capitalize expand="block" mode="ios"
+        (click)="signup()" [class.disabled]="!signUpForm.valid ">{{'Submit'}}</ion-button>
+    </form>
+  </div>
+</ion-content>

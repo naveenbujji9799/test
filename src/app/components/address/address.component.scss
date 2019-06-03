@@ -1,0 +1,16 @@
+hr {
+    border: 0.5px solid black !important;
+    opacity: 0.1 !important;
+    visibility: visible !important;
+}
+
+.address-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.add-icon {
+    margin-left: 5px;
+    margin-top: 2px;
+}

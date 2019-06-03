@@ -1,0 +1,31 @@
+<div class="address-header">
+  <div class="address-header-text">
+    Your Addresses
+  </div>
+  <div (click)="navigateToAddAddressPage()" class="add-icon">
+    <ion-icon name="add-circle"></ion-icon>
+  </div>
+</div>
+
+<form>
+  <ion-searchbar animated="true" clear-icon="close-circle"></ion-searchbar>
+</form>
+
+<ion-card *ngFor="let address of Addresses; let i=index;">
+    <ion-item>
+      <ion-label>{{address.fullName}}</ion-label>
+      <ion-icon (click)="onEditAddress(i);"name="create"></ion-icon>
+      <ion-icon (click)="ondeleteAddress(address,i);" name="trash"></ion-icon>
+    </ion-item>
+  <hr>
+    <ion-card-content>
+      <div class="address-line1">{{address.addressLine1}}</div>
+      <div class="address-line2">{{address.addressLine2}}</div>
+      <div class="city">{{address.city}}</div>
+      <div class="district">{{address.district}}</div>
+      <div class="landmark">{{address.landmark}}</div>
+      <div class="state-pincode">{{address.state}}<span>{{address.pincode}}</span></div>
+      <div class="country">{{address.country}}</div>
+      <div class="phone-number">Phone Number:<span>{{address.phoneNumber}}</span></div>
+    </ion-card-content>
+</ion-card>

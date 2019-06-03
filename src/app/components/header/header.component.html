@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button *ngIf="showMenu"></ion-menu-button>
+      <ion-icon *ngIf="showBackButton" (click)="goBack()" size="large" name="arrow-round-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>
+      {{title}}
+    </ion-title>
+    <div *ngIf="showCart" slot="end" (click)="goToPage('cart');">
+      <div class="icon icon-cart cart-logo"></div>
+      <div class="cart-count" [innerHtml]="2"></div>
+    </div>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="showSubHeader">
+    <ion-title>Subheader</ion-title>
+  </ion-toolbar>
+</ion-header>
